@@ -15,10 +15,10 @@ room-number,use,sq-ft,price
 
 '''
 
+import csv  
 
 
-
-datastore = { "medical":[
+datastore = { "medical":[ #one key with a list of dictionaries
       { "room-number": 100,
         "use": "reception",
         "sq-ft": 50,
@@ -47,3 +47,14 @@ datastore = { "medical":[
 
       ]
 }
+
+outfile = open('retail_space.csv', 'w')
+
+outfile.write(f"room-number,use,sq-ft,price\n")
+
+for l in datastore['medical']: #evaluates to a list so we can parse through it, l represents every iteration
+    outfile.write(f"{l['room-number']},{l['use']},{l['sq-ft']},{l['price']}\n")
+  
+outfile.close()
+    
+
